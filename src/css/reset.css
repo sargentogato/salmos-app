@@ -1,0 +1,74 @@
+﻿*,
+html,
+body,
+form,
+p,
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+* {
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+}
+
+a,
+li {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+a img {
+  border: none;
+  display: block;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+caption,
+th,
+td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+button {
+  outline-style: none;
+}
+
+/* 
+ * Esto evita que los inputs tengan la sombra que aparece por defecto cuando
+ * su estado es focus
+ */
+:focus {
+  box-shadow: none;
+  outline: none;
+}
+/* Los p tienen 1em de separación abajo cuando se usa Bootstrap */
