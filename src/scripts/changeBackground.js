@@ -10,5 +10,5 @@ function generateRandomColor() {
   body.style.setProperty("--background-body", `${color}${opacity}`);
   document
     .querySelector('meta[name = "theme-color"]')
-    .setAttribute("content", `${color}${opacity}`);
+    .setAttribute("content", color);
 }
