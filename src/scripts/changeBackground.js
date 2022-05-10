@@ -8,4 +8,7 @@ function generateRandomColor() {
   const opacity = 70;
 
   body.style.setProperty("--background-body", `${color}${opacity}`);
+  document
+    .querySelector('meta[name = "theme-color"]')
+    .setAttribute("content", `${color}${opacity}`);
 }
