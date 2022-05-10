@@ -13,9 +13,9 @@ function drawSalmo(salmo) {
 
   app.innerHTML = `
   <div id="main" class="main">
-    <h1 class="title">${salmo.title}</h1>
-    <div class="date">${salmo.date}</div>
-    <div class="salmo">${salmo.content}</div>
+    <h1 class="main__title">${salmo.title}</h1>
+    <div class="main__date">${salmo.date}</div>
+    <div class="main__salmo">${salmo.content}</div>
   </div>
   `;
 }
