@@ -1,10 +1,10 @@
 let cacheName = "V.0.9.5";
 let assets = [
   "index.html",
-  "./scripts/script.js",
-  "./scripts/sw.js",
-  "./scripts/changeBackground",
-  "./icon/icon-192x192.png",
+  "./src/scripts/script.js",
+  "./sw.js",
+  "./src/scripts/changeBackground.js",
+  "./src/icons/icon-192x192.png",
 ];
 
 self.addEventListener("install", (installEvent) => {
@@ -40,7 +40,7 @@ self.addEventListener("activate", (cleanEvent) => {
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker
-      .register("./src/sw.js")
+      .register("/sw.js")
       .then((res) => console.log("service worker registered"))
       .catch((err) => console.log("service worker not registered", err));
   });
