@@ -2,7 +2,7 @@ let cacheName = "V.0.9.5";
 let assets = [
   "index.html",
   "./src/scripts/script.js",
-  "sw.js",
+  "/sw.js",
   "./src/scripts/changeBackground.js",
   "./src/icons/icon-192x192.png",
 ];
