@@ -38,13 +38,11 @@ function cleanText(text) {
 function callData() {
   //FR para otro idioma
   const salmosBook = 1
-  console.log(tomorrow())
   const url = `https://publication.evangelizo.ws/SP/days/${today()}`
 
   const data = fetch(url)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result.data)
       let salmos = {
         date: result.data.date_displayed,
         content: cleanText(result.data.readings[salmosBook].text),
