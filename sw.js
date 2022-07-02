@@ -5,7 +5,7 @@ let assets = [
   "./src/scripts/script.js",
   "./sw.js",
   "./src/scripts/changeBackground.js",
-  ".src/icons/android/android-launchericon-192-192.png",
+  "./src/icons/android/android-launchericon-192-192.png",
 ]
 
 self.addEventListener("install", (installEvent) => {
