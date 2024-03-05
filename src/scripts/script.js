@@ -16,15 +16,15 @@ function tomorrow() {
   return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
 }
 
-function drawSalmo(salmo) {
+function drawSalmo({ title, date, content }) {
   const app = document.getElementById("app");
   generateRandomColor();
 
   app.innerHTML = `
   <div id="main" class="main">
-    <h1 class="main__title">${salmo.title}</h1>
-    <div class="main__date">${salmo.date}</div>
-    <div class="main__salmo">${salmo.content}</div>
+    <h1 class="main__title">${title}</h1>
+    <div class="main__date">${date}</div>
+    <div class="main__salmo">${content}</div>
   </div>
   `;
 }
@@ -40,22 +40,36 @@ function callData() {
   const salmosBook = 1;
   const url = `https://publication.evangelizo.ws/SP/days/${today()}`;
 
-  fetch(url)
-    .then((response) => {
-      const info = response.json();
-      console.log(info);
-      return info;
-    })
-    .then(({ data: { date_displayed, readings } }) => {
-      let salmos = {
-        date: date_displayed,
-        content: cleanText(readings[salmosBook].text),
-        title: readings[1].title,
-      };
+  try {
+    fetch(url)
+      .then((response) => {
+        if (response.ok) {
+          console.log(
+            "Promise resolved and HTTP status successful:",
+            response.status,
+          );
 
-      drawSalmo(salmos);
-    })
-    .catch((error) => console.log("error", error));
+          return response.json();
+        } else {
+          if (response.status === 404)
+            throw new Error("404, Resourse not found. Review url");
+          if (response.status === 500)
+            throw new Error("500, Internal server error");
+          throw new Error("Other error", response.status);
+        }
+      })
+      .then(({ data: { date_displayed, readings } }) => {
+        let salmos = {
+          date: date_displayed,
+          content: cleanText(readings[salmosBook].text),
+          title: readings[1].title,
+        };
+
+        drawSalmo(salmos);
+      });
+  } catch {
+    console.error("Promise rejected");
+  }
 }
 
 callData();
