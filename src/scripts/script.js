@@ -1,15 +1,8 @@
+import { SHUFFLED_PSALMS } from "../data/shuffle_salms.js";
+
 function today() {
   const date = new Date();
   const d = date.getDate();
-  const m = date.getMonth() + 1;
-  const y = date.getFullYear();
-
-  return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
-}
-
-function tomorrow() {
-  const date = new Date();
-  const d = date.getDate() + 1;
   const m = date.getMonth() + 1;
   const y = date.getFullYear();
 
@@ -36,9 +29,7 @@ function cleanText(text) {
 }
 
 function callData() {
-  //FR para otro idioma
-  const salmosBook = 1;
-  const url = `https://publication.evangelizo.ws/SP/days/${today()}`;
+  const url = "src/data/salmos.json";
 
   try {
     fetch(url)
@@ -48,27 +39,40 @@ function callData() {
             "Promise resolved and HTTP status successful:",
             response.status,
           );
-
           return response.json();
         } else {
-          if (response.status === 404)
-            throw new Error("404, Resourse not found. Review url");
-          if (response.status === 500)
-            throw new Error("500, Internal server error");
-          throw new Error("Other error", response.status);
+          throw new Error(`Error fetching local JSON: ${response.status}`);
         }
       })
-      .then(({ data: { date_displayed, readings } }) => {
-        let salmos = {
-          date: date_displayed,
-          content: cleanText(readings[salmosBook].text),
-          title: readings[1].title,
+      .then((salmosData) => {
+        console.log("DATA:", salmosData);
+
+        const startDate = new Date(2024, 0, 1);
+        startDate.setHours(0, 0, 0, 0); // Fecha ancla
+        const actualDay = new Date();
+        actualDay.setHours(0, 0, 0, 0);
+
+        console.log("startDate:", startDate, "today:", actualDay);
+
+        const diffTime = Math.abs(actualDay - startDate);
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        const index = diffDays % SHUFFLED_PSALMS.length;
+        console.log("🚀 ~ callData ~ index:", index);
+
+        const randomSalmo = salmosData[index];
+        console.log("randomSalmo:", randomSalmo);
+
+        let salmo = {
+          date: today(),
+          content: cleanText(randomSalmo.contenido),
+          title: randomSalmo.titulo,
         };
 
-        drawSalmo(salmos);
+        drawSalmo(salmo);
       });
-  } catch {
-    console.error("Promise rejected");
+  } catch (error) {
+    console.error("Error reading or processing local JSON:", error);
   }
 }
 

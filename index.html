@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>
-      ;(function (w, d, s, l, i) {
-        w[l] = w[l] || []
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" })
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : ""
-        j.async = true
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl
-        f.parentNode.insertBefore(j, f)
-      })(window, document, "script", "dataLayer", "GTM-KLQLDK6")
-    </script>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/css/reset.css" />
-    <link rel="stylesheet" href="./src/css/styles.css" />
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+    ; (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-KLQLDK6")
+  </script>
 
-    <link rel="manifest" href="./manifest.webmanifest" />
-    <meta name="theme-color" content="" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/css/reset.css" />
+  <link rel="stylesheet" href="./src/css/styles.css" />
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="apple-touch-icon" href="./src/icons/ios/512.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="./src/icons/ios/100.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="./src/icons/ios/128.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="./src/icons/ios/152.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <meta name="theme-color" content="" />
 
-    <title>Salmos</title>
-  </head>
-  <body id="body">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLQLDK6" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="apple-touch-icon" href="./src/icons/ios/512.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="./src/icons/ios/100.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="./src/icons/ios/128.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="./src/icons/ios/152.png" />
 
-    <div id="app"></div>
-    <script src="./sw.js"></script>
-    <script src="./src/scripts/script.js"></script>
-    <script src="./src/scripts/changeBackground.js"></script>
-  </body>
+  <title>Salmos</title>
+</head>
+
+<body id="body">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLQLDK6" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
+
+  <div id="app"></div>
+  <script src="./sw.js"></script>
+  <script type="module" src="./src/scripts/script.js"></script>
+  <script src="./src/scripts/changeBackground.js"></script>
+</body>
+
 </html>
