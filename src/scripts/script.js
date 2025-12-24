@@ -6,7 +6,7 @@ function today() {
   const m = date.getMonth() + 1;
   const y = date.getFullYear();
 
-  return "" + y + "-" + (m <= 9 ? "0" + m : m) + "-" + (d <= 9 ? "0" + d : d);
+  return (d <= 9 ? "0" + d : d) + "-" + (m <= 9 ? "0" + m : m) + "-" + y;
 }
 
 function drawSalmo({ title, date, content }) {
