@@ -45,23 +45,17 @@ function callData() {
         }
       })
       .then((salmosData) => {
-        console.log("DATA:", salmosData);
-
         const startDate = new Date(2024, 0, 1);
         startDate.setHours(0, 0, 0, 0); // Fecha ancla
         const actualDay = new Date();
         actualDay.setHours(0, 0, 0, 0);
 
-        console.log("startDate:", startDate, "today:", actualDay);
-
         const diffTime = Math.abs(actualDay - startDate);
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
         const index = diffDays % SHUFFLED_PSALMS.length;
-        console.log("🚀 ~ callData ~ index:", index);
 
         const randomSalmo = salmosData[index];
-        console.log("randomSalmo:", randomSalmo);
 
         let salmo = {
           date: today(),
